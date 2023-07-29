@@ -32,7 +32,7 @@ env/Scripts/activate
 ```
 
 * If you get error for windows while activating environment:
-```aidl
+```shell
 if you get error:
     cannot be loaded because running scripts is disabled on this system.
     
