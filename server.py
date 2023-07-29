@@ -36,7 +36,10 @@ def get_input_box():
 
 def is_logged_in():
     # See if we have a textarea with data-id="root"
-    return get_input_box() is not None
+    try:
+        return get_input_box() is not None
+    except AttributeError:
+        return False
 
 def is_button_visible_and_correct():
     """Check if a button with a specific class"""
@@ -127,13 +130,14 @@ def restart():
 
 def start_browser():
     PAGE.goto("https://chat.openai.com/")
+    APP.run(port=5001, threaded=False)
     if not is_logged_in():
         print("Please log in to OpenAI Chat")
         print("Press enter when you're done")
         input()
     else:
         print("Logged in")
-        APP.run(port=5001, threaded=False)
+
 
 if __name__ == "__main__":
     start_browser()
